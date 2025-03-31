@@ -175,6 +175,41 @@ public class EmpleadoPasante {
 
 
 <h3>RESULTADO</h3>
+primer paso:
+
+public abstract class Empleado {
+
+}
+
+public class EmpleadoPlanta extends Empleado
+...(las demas clases extienden a empleado)
+
+@@@@@@@
+segundo paso:
+public abstract class empleado{
+  public String nombre;
+  public String apellido;
+  public double sueldoBasico = 0;
+}
+
+public class EmpleadoPlanta extends Empleado{
+  public int cantidadHijos = 0;
+}
+...(Las demas clases tambien pierden estos valores)
+
+@@@@@@@
+tercer paso:
+public abstract class empleado{
+  protected String nombre;
+  protected String apellido;
+  protected double sueldoBasico = 0;
+
+}
+
+public class EmpleadoPlanta extends Empleado{
+  private int cantidadHijos = 0;
+}
+...(Otros empleados con variables tambien las encapsulan)
 
 
 
