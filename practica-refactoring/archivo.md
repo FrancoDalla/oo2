@@ -171,14 +171,19 @@ public class EmpleadoPasante {
 3.Encapsulate field
   -Para encapsular los datos de las mismas.
     Se haria con las variables compartidas en la superclase y las que quedan en los hijos.
+4. template method?
+  -Para volver generico el comportamiento compartido.
+
 
 
 
 <h3>RESULTADO</h3>
-primer paso:
+primer paso extract superclass:
 
 public abstract class Empleado {
-
+  public String nombre;
+  public String apellido;
+  public double sueldoBasico = 0;
 }
 
 public class EmpleadoPlanta extends Empleado
@@ -211,5 +216,42 @@ public class EmpleadoPlanta extends Empleado{
 }
 ...(Otros empleados con variables tambien las encapsulan)
 
+@@@@@@@
+cuarto paso:
+public abstract class empleado{
+  protected String nombre;
+  protected String apellido;
+  protected double sueldoBasico = 0;
 
+  public abstract double calculosClase();
+  
+  public double sueldo(){
+    return this.sueldoBasico
+           +(this.calculosClase())
+           -(this.sueldoBasico * 0.13);
+  }
 
+}
+
+public class empleadoTemporario extends empleado{
+  privated double horasTrabajadas = 0;
+  privated int cantidadHijos = 0;
+
+  public double calculosClase(){
+    return  this.cantidadHijos * 2000;
+  }
+}
+
+public class empleadoPlanta{
+  privated int cantidadHijos = 0;
+
+  public double calculosClase(){
+    return this.cantidadHijos * 2000;
+  }
+}
+
+public class empleadoPasante{
+  public double calculosClase(){
+    return 0;
+  }
+}
