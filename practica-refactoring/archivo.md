@@ -109,6 +109,7 @@ Para cada ejercicio:
 
 <h2>2.1 Empleados</h2>
 
+```java
 public class EmpleadoTemporario {
     public String nombre;
     public String apellido;
@@ -150,6 +151,7 @@ public class EmpleadoPasante {
         return this.sueldoBasico - (this.sueldoBasico * 0.13);
     }
 }
+```
 
 <h3>Malos olores</h3>
   >codigo duplicado
@@ -180,6 +182,7 @@ public class EmpleadoPasante {
 <h3>RESULTADO</h3>
 primer paso extract superclass:
 
+```java
 public abstract class Empleado {
   public String nombre;
   public String apellido;
@@ -188,9 +191,12 @@ public abstract class Empleado {
 
 public class EmpleadoPlanta extends Empleado
 ...(las demas clases extienden a empleado)
+```
 
 @@@@@@@
 segundo paso:
+
+```java
 public abstract class empleado{
   public String nombre;
   public String apellido;
@@ -201,9 +207,12 @@ public class EmpleadoPlanta extends Empleado{
   public int cantidadHijos = 0;
 }
 ...(Las demas clases tambien pierden estos valores)
+```
 
 @@@@@@@
 tercer paso:
+
+```java
 public abstract class empleado{
   protected String nombre;
   protected String apellido;
@@ -216,8 +225,12 @@ public class EmpleadoPlanta extends Empleado{
 }
 ...(Otros empleados con variables tambien las encapsulan)
 
+```
+
 @@@@@@@
 cuarto paso:
+
+```java
 public abstract class empleado{
   protected String nombre;
   protected String apellido;
@@ -255,3 +268,4 @@ public class empleadoPasante{
     return 0;
   }
 }
+```
