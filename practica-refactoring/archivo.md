@@ -108,3 +108,73 @@ Para cada ejercicio:
 
 
 <h2>2.1 Empleados</h2>
+
+public class EmpleadoTemporario {
+    public String nombre;
+    public String apellido;
+    public double sueldoBasico = 0;
+    public double horasTrabajadas = 0;
+    public int cantidadHijos = 0;
+    // ......
+    
+public double sueldo() {
+  return this.sueldoBasico
+         +(this.horasTrabajadas * 500) 
+         +(this.cantidadHijos * 1000) 
+         -(this.sueldoBasico * 0.13);
+  }
+
+}
+
+public class EmpleadoPlanta {
+    public String nombre;
+    public String apellido;
+    public double sueldoBasico = 0;
+    public int cantidadHijos = 0;
+    // ......
+    
+    public double sueldo() {
+        return this.sueldoBasico 
+              + (this.cantidadHijos * 2000)
+              - (this.sueldoBasico * 0.13);
+    }
+}
+
+public class EmpleadoPasante {
+    public String nombre;
+    public String apellido;
+    public double sueldoBasico = 0;
+    // ......
+    
+    public double sueldo() {
+        return this.sueldoBasico - (this.sueldoBasico * 0.13);
+    }
+}
+
+<h3>Malos olores</h3>
+  >codigo duplicado
+    -Todos los tipos de empleados tienen variables que son comunes entre ellos.
+    -Todos los tipos de empleados tienen un metodo para calcular su sueldo.
+      -Este metodo tiene comportamiento generico.
+
+  >falta de jerarquía(relacionado con lo previo)
+    -Hay razones de sobra para implementar una jerarquía.
+  >falta de encapsulamiento
+    -Las variables de todas las clases estan como publicas
+
+<h3>Refactorings a aplicar</h3>
+1.Extract superclass
+  -Para corregir la falta de una jerarquía evidente.
+2.Pull up field
+  -Para volver común los datos que comparten estas variables.
+    se haria con las variables nombre, apellido, sueldoBasico.
+3.Encapsulate field
+  -Para encapsular los datos de las mismas.
+    Se haria con las variables compartidas en la superclase y las que quedan en los hijos.
+
+
+
+<h3>RESULTADO</h3>
+
+
+
