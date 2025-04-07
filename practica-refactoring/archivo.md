@@ -269,3 +269,88 @@ public class empleadoPasante{
   }
 }
 ```
+@@@@@@@
+
+<h2>2.2 Juego</h2>
+Idem ejercicio anterior.
+
+```java
+	//...
+	public class Juego{
+		public void incrementar(Jugador j){
+			j.puntuacion = j.puntuacion + 100;	
+		}
+		
+		public void decrementar(Jugador j){
+			j.puntuacion = j.puntuacion - 50; 		
+		}
+	}
+	
+	public class Jugador{
+		public String nombre;
+		public String apellido;
+		public int puntacion = 0;	
+	}
+```
+
+bad smells:
+	>Clase jugador es una clase de datos.
+	>Juego presenta feature envy
+	>Rompe encapsulamiento
+	>nombres pocos claros
+	>
+
+
+Clase jugador como clase de datos, feature envy:
+	Hacemos move method entre Juego y Jugador y hacemos que juego permanezca con codigo que haga
+	el llamado al metodo de jugador
+
+```java
+	public class Juego{
+		public void incrementar(Jugador j){
+			j.incrementarPuntuacion();		
+		}
+		
+		public void decrementar(Jugador j){
+			j.decrementarPuntuacion();		
+		}	
+	}
+
+	public class Jugador{
+		public String nombre;
+		public String apellido;
+		public int puntuacion = 0;
+
+		public void incrementarPuntuacion(){
+			puntuacion = puntuacion + 100;		
+		}
+
+		public void decrementarPuntuacion(){
+			puntuacion = puntuacion - 50;		
+		}
+	}
+```
+Rompe encapsulamiento:
+	Aplicamos encapsulate field en la clase Jugador, que posee todos sus datos como públicos.
+
+
+nombres poco claros:
+	Los nombres incrementar y decrementar de la clase Juego no son muy claros, tampoco el parametro j.
+	
+	renombrar metodos.
+	
+	public class Juego{
+		public void incrementarPuntuacion(Jugador jugador){
+			//...		
+		}
+
+		public void decrementarPuntuacion(Jugador jugador){
+			//...
+		}
+	}
+Estado de Jugador:
+	private String nombre;
+	private String apellido;
+	private String puntuacion
+
+'
