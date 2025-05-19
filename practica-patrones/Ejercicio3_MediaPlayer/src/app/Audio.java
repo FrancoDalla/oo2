@@ -1,3 +1,4 @@
+package app;
 
 public class Audio extends Media{
 
@@ -5,5 +6,5 @@ public class Audio extends Media{
 	public void play() {
 		System.out.println("soy audio");
 	}
-	
+
 }

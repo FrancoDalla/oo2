@@ -1,7 +1,8 @@
+package app;
 
 public class Adaptador extends Media{
 	private VideoStream adaptee;
-	
+
 	public Adaptador() {
 		adaptee = new VideoStream();
 	}
@@ -9,7 +10,7 @@ public class Adaptador extends Media{
 	@Override
 	public void play() {
 		adaptee.reproduce();
-		
+
 	}
-	
+
 }
