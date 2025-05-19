@@ -5,7 +5,7 @@ public class Novedad implements Recomendacion{
 
 	@Override
 	public ArrayList<Pelicula> recomendar(ArrayList<Pelicula> peliculas, ArrayList<Pelicula> peliculasVistas) {
-		ArrayList<Pelicula> recomendaciones = new ArrayList(peliculas);
+		ArrayList<Pelicula> recomendaciones = new ArrayList<Pelicula>(peliculas);
 		recomendaciones.removeAll(peliculasVistas);
 		return new ArrayList<Pelicula>(recomendaciones.stream()
 		.sorted(Comparator.comparing(Pelicula::getEstreno))
