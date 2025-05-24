@@ -23,7 +23,7 @@ public class FileSystem {
 	
 	
 	public ArrayList<Componente> buscar(String nombre){
-		return componentes.stream()
-				.findFirst().filter(componente -> componente.getSize() == 5);
 	}
+	
+	
 }
